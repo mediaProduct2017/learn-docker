@@ -188,6 +188,9 @@ Now that we've modified the container we have to commit the changes. First exit 
     sudo docker commit CONTAINER_ID IMAGE_NAME
     sudo docker commit CONTAINER_NAME IMAGE_NAME
     
+    sudo nvidia-docker commit decanlp-container ubuntu-gpu:version2
+    sudo nvidia-docker commit d6a3a31a8bf9 ubuntu-gpu:version2
+    
 Commands to check information about the system
 
     lspci | grep VGA
@@ -216,6 +219,10 @@ Description of building development environment
 DOCKER IMAGE CREATION
 
      docker build -t IMAGE[:TAG] –f Dockerfile {dockerfile path}
+     
+DOCKER IMAGE Remove
+
+    sudo docker image rm 7b9fa6da1648
      
 SOME USERFUL CLEANUP COMMANDS:
 
