@@ -162,6 +162,8 @@ Generically, use docker exec -it \<container name> <command> to execute whatever
 在SSH到container之后，可以进行一般的shell操作，比如git clone，比如mkdir，比如：
 
     python decaNLP/train.py --train_tasks squad --gpus 0
+    # 运行上面的命令就可以在输出日志中看到默认的参数情况，可以参考默认参数进行修改，避免run out of memery，如下：
+    python decaNLP/train.py --train_tasks squad --gpus 0 --train_batch_tokens 5000 --val_batch_size 128
     
     # ?
     python decaNLP/train.py --train_tasks squad --gpus 0,1
@@ -190,6 +192,8 @@ Now that we've modified the container we have to commit the changes. First exit 
     
     sudo nvidia-docker commit decanlp-container ubuntu-gpu:version2
     sudo nvidia-docker commit d6a3a31a8bf9 ubuntu-gpu:version2
+    
+docker commit是在repository中创建新的tag版本，创建新的image和image id，而不是覆盖掉原来的commit，如果commit极大，把原来的commit删掉就行。
     
 Commands to check information about the system
 
